@@ -1,0 +1,185 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to use the new color palette provided by the user */
+  --background: #f3f4f6;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #0045ff;
+  --primary-foreground: #ffffff;
+  --secondary: #fafafa;
+  --secondary-foreground: #171717;
+  --muted: #e5e5e5;
+  --muted-foreground: #525252;
+  --accent: #fafafa;
+  --accent-foreground: #171717;
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: #ffffff;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0045ff;
+  --chart-1: oklch(0.65 0.15 260);
+  --chart-2: oklch(0.55 0.2 264);
+  --chart-3: oklch(0.5 0.18 30);
+  --chart-4: oklch(0.7 0.15 140);
+  --chart-5: oklch(0.6 0.18 320);
+  --radius: 0.5rem;
+
+  /* Added custom tokens for font colors */
+  --primary-font: #171717;
+  --secondary-font: #262626;
+  --tertiary-font: #525252;
+
+  /* Added custom tokens for button states */
+  --button-primary-default: #0045ff;
+  --button-primary-label: #ffffff;
+  --button-primary-hover: #0038d0;
+  --button-primary-disabled: #e5e5e5;
+  --button-primary-label-disabled: #a3a3a3;
+  --button-secondary-default: #fafafa;
+  --button-secondary-label: #171717;
+  --button-secondary-hover: #e5e5e5;
+  /* Added border token for secondary buttons */
+  --border-secondary-button: #e5e5e5;
+
+  /* Added custom tokens for hover and selected states */
+  --hover-table: #e7f6ff;
+  --selected-section: #e7f6ff;
+  --section-selected: #0045ff; /* Added token for selected section text and icon color */
+
+  /* Added badge status tokens */
+  --badge-success: #eefff1;
+  --badge-label-success: #068f2a;
+  --badge-error: #ffcde3;
+  --badge-label-error: #851246;
+  --badge-info: #d3efff;
+  --badge-label-info: #0b38a4;
+
+  /* Updated sidebar colors */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #171717;
+  --sidebar-primary: #262626;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #262626;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #525252;
+}
+
+.dark {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.15 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.15 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.55 0.2 264);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.25 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.25 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.55 0.2 264);
+  --chart-1: oklch(0.65 0.15 260);
+  --chart-2: oklch(0.55 0.2 264);
+  --chart-3: oklch(0.5 0.18 30);
+  --chart-4: oklch(0.7 0.15 140);
+  --chart-5: oklch(0.6 0.18 320);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Added custom color mappings for new tokens */
+  --color-primary-font: var(--primary-font);
+  --color-secondary-font: var(--secondary-font);
+  --color-tertiary-font: var(--tertiary-font);
+  --color-button-primary-default: var(--button-primary-default);
+  --color-button-primary-label: var(--button-primary-label);
+  --color-button-primary-hover: var(--button-primary-hover);
+  --color-button-primary-disabled: var(--button-primary-disabled);
+  --color-button-primary-label-disabled: var(--button-primary-label-disabled);
+  --color-button-secondary-default: var(--button-secondary-default);
+  --color-button-secondary-label: var(--button-secondary-label);
+  --color-button-secondary-hover: var(--button-secondary-hover);
+  /* Added color mapping for secondary button border */
+  --color-border-secondary-button: var(--border-secondary-button);
+
+  /* Added color mappings for hover and selected states */
+  --color-hover-table: var(--hover-table);
+  --color-selected-section: var(--selected-section);
+  --color-section-selected: var(--section-selected); /* Added color mapping for selected section text/icon */
+
+  /* Added badge status color mappings */
+  --color-badge-success: var(--badge-success);
+  --color-badge-label-success: var(--badge-label-success);
+  --color-badge-error: var(--badge-error);
+  --color-badge-label-error: var(--badge-label-error);
+  --color-badge-info: var(--badge-info);
+  --color-badge-label-info: var(--badge-label-info);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
